@@ -1,0 +1,66 @@
+﻿// Fill out your copyright notice in the Description page of Project Settings.
+
+#pragma once
+
+#include "CoreMinimal.h"
+#include "AttributeSet.h"
+#include  "AbilitySystemComponent.h"
+#include "BasicAttributeSet.generated.h"
+
+/**
+ * 
+ */
+UCLASS()
+class GASLEARNING_API UBasicAttributeSet : public UAttributeSet
+{
+	GENERATED_BODY()
+	
+	public:
+	
+	UBasicAttributeSet();
+	
+	
+	//Health Attribute
+	UPROPERTY(BlueprintReadOnly, Category="Attributes", ReplicatedUsing=OnRep_Health)
+	FGameplayAttributeData Health;
+	ATTRIBUTE_ACCESSORS_BASIC(UBasicAttributeSet,Health);// to set and get health
+	
+	UPROPERTY(BlueprintReadOnly, Category= "Attributes", ReplicatedUsing = OnRep_MaxHealth)
+	FGameplayAttributeData MaxHealth;
+	ATTRIBUTE_ACCESSORS_BASIC(UBasicAttributeSet,MaxHealth);
+	//Stamina
+	UPROPERTY(BlueprintReadOnly, Category= "Attributes", ReplicatedUsing = OnRep_Stamina)
+	FGameplayAttributeData Stamina;
+	ATTRIBUTE_ACCESSORS_BASIC(UBasicAttributeSet,Stamina);
+	UPROPERTY(BlueprintReadOnly, Category= "Attributes", ReplicatedUsing = OnRep_MaxStamina)
+	FGameplayAttributeData MaxStamina;
+	ATTRIBUTE_ACCESSORS_BASIC(UBasicAttributeSet,MaxStamina);
+	
+	public:
+	UFUNCTION()
+	void OnRep_Health(const FGameplayAttributeData& oldValue) const
+	{
+		GAMEPLAYATTRIBUTE_REPNOTIFY(UBasicAttributeSet, Health, oldValue);
+	}
+	UFUNCTION()
+	void OnRep_MaxHealth(const FGameplayAttributeData& oldValue) const
+	{
+		GAMEPLAYATTRIBUTE_REPNOTIFY(UBasicAttributeSet, MaxHealth, oldValue);
+	}
+	UFUNCTION()
+	void OnRep_Stamina(const FGameplayAttributeData& oldValue) const
+	{
+		GAMEPLAYATTRIBUTE_REPNOTIFY(UBasicAttributeSet, Stamina, oldValue);
+	}
+	UFUNCTION()
+	void OnRep_MaxStamina(const FGameplayAttributeData& oldValue) const
+	{
+		GAMEPLAYATTRIBUTE_REPNOTIFY(UBasicAttributeSet, MaxStamina, oldValue);
+	}
+	
+	virtual void GetLifetimeReplicatedProps(TArray<class FLifetimeProperty>& OutLifetimeProps) const override;
+	
+	virtual void PreAttributeChange(const FGameplayAttribute& Attribute, float& NewValue) override;
+	
+	virtual void PostGameplayEffectExecute(const struct FGameplayEffectModCallbackData& Data) override;
+};

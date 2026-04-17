@@ -1,0 +1,13 @@
+fileFormatVersion: 2
+guid: a9c287dd87ebc924dbbd3bd8cfca1240
+MonoImporter:
+  externalObjects: {}
+  serializedVersion: 2
+  defaultReferences:
+  - shotgunReticle: {fileID: 3626515204767707646, guid: f8c7948beffc5c34ebf8cce2cf915f15, type: 3}
+  - sniperReticle: {fileID: 2866449788214847164, guid: 3cd6f70db2bc30844949158f7f096eba, type: 3}
+  executionOrder: 0
+  icon: {instanceID: 0}
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

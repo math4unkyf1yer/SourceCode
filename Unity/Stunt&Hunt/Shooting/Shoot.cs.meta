@@ -1,0 +1,24 @@
+fileFormatVersion: 2
+guid: ad101dec51d862b4986ba1893ba424ee
+MonoImporter:
+  externalObjects: {}
+  serializedVersion: 2
+  defaultReferences:
+  - cameraTransform: {instanceID: 0}
+  - gunStartPoint: {instanceID: 0}
+  - head: {instanceID: 0}
+  - forearm: {instanceID: 0}
+  - lookatHead: {instanceID: 0}
+  - lookAtWeapon: {instanceID: 0}
+  - shootLine: {instanceID: 0}
+  - bulletText: {instanceID: 0}
+  - sniperShoot: {instanceID: 0}
+  - shotgunShoot: {instanceID: 0}
+  - gunEmpty: {instanceID: 0}
+  - gunReload: {fileID: 8300000, guid: 3154eade5a07e384cb915ca848783f81, type: 3}
+  - gunSource: {instanceID: 0}
+  executionOrder: 0
+  icon: {instanceID: 0}
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
