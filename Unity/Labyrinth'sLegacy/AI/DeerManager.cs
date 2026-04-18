@@ -1,5 +1,3 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class DeerManager : MonoBehaviour
@@ -7,12 +5,13 @@ public class DeerManager : MonoBehaviour
     public GameObject deer;
     public TerGen terGenScript;
     public int spawnHeight = 3;
+
     private void Start()
     {
-        terGenScript = this.GetComponent<TerGen>();
+        terGenScript = GetComponent<TerGen>();
     }
-    //once dies activate this 
-    public void DeerDead()//spawn the boar after death 
+
+    public void DeerDead()
     {
         terGenScript.EnemySpawn(deer, spawnHeight);
     }

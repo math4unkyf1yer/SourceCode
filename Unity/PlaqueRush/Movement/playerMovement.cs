@@ -333,9 +333,9 @@ public class playerMovement : MonoBehaviour
                 float absX = Mathf.Abs(delta.x);
                 float absY = Mathf.Abs(delta.y);
 
-                // ──────────────────────────────────────────────
+                
                 // LEFT / RIGHT swipe
-                // ──────────────────────────────────────────────
+           
                 if (absX > absY && absX > swipeRange && isWaitingForTurnInput)
                 {
                     if (delta.x < 0)
@@ -361,9 +361,9 @@ public class playerMovement : MonoBehaviour
                     break;
                 }
 
-                // ──────────────────────────────────────────────
+                
                 // UP / DOWN swipe
-                // ──────────────────────────────────────────────
+             
                 if (absY > absX && absY > swipeRange)
                 {
                     if (delta.y > 0)

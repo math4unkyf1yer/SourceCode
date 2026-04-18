@@ -1,5 +1,3 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class GobberManager : MonoBehaviour
@@ -10,10 +8,10 @@ public class GobberManager : MonoBehaviour
 
     private void Start()
     {
-        terGenScript = this.GetComponent<TerGen>();
+        terGenScript = GetComponent<TerGen>();
     }
-    //once dies activate this 
-    public void GobberDead()//spawn the boar after death 
+
+    public void GobberDead()
     {
         terGenScript.EnemySpawn(Gobber, spawnHeight);
     }

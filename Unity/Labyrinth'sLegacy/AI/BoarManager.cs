@@ -1,5 +1,3 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class BoarManager : MonoBehaviour
@@ -10,11 +8,11 @@ public class BoarManager : MonoBehaviour
 
     private void Start()
     {
-        terGenScript = this.GetComponent<TerGen>();
+        terGenScript = GetComponent<TerGen>();
     }
-    //once dies activate this 
-    public void BoarDead()//spawn the boar after death 
+
+    public void BoarDead()
     {
-        terGenScript.EnemySpawn(Boar,spawnHeight);
+        terGenScript.EnemySpawn(Boar, spawnHeight);
     }
 }

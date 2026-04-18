@@ -25,8 +25,8 @@ public class InventoryUI : MonoBehaviour
     {
         for(int i = 0; i < slotsUi.Length; i++)
         {
-            Slot s = inventory.getSlotAt(i);
-
+            Slot s = inventory.GetSlotAt(i);
+           
             if (s != null && s.items.Count > 0)
             {
                 slotsUi[i].SetInventoryInfo(s.items[0], s.items.Count,s);

@@ -14,11 +14,13 @@ public class PuzzleManager : MonoBehaviour
     public MapGenerator mapScript;
     private GameObject playerCamera;
     private GameObject playerCameraFpp;
+    private GameObject endWall;
 
     private Timer timerScript;
 
     //puzzle count
     private int howManyPuzzleFinish;
+    private int howManyPuzzleSpawns = 3;
     public int puzzleNeededFinish;
 
     //make sure can only do one puzzle at a time
@@ -27,14 +29,14 @@ public class PuzzleManager : MonoBehaviour
     private void Start()
     {
         timerScript = gameObject.GetComponent<Timer>();
-        
+         endWall = GameObject.FindWithTag("EndWALL");
     }
 
-    public void startPuzzle()
+    public void StartPuzzle()
     {
         MixedPuzzles(puzzleObject);
         //start timer
-        timerScript.startTimer();
+        timerScript.StartTimer();
         PlayerIs(false);
         SpawnPuzzle();
     }
@@ -43,7 +45,7 @@ public class PuzzleManager : MonoBehaviour
 
         timerPage.SetActive(true);
         //Instantiate spawn the first 3 
-        for (int i = 0; i < 3; i++)
+        for (int i = 0; i < howManyPuzzleSpawns; i++)
         {
             GameObject spawnObject = Instantiate(puzzleObject[i]);
             spawnObject.transform.position = puzzlePosition[i].position;
@@ -93,8 +95,7 @@ public class PuzzleManager : MonoBehaviour
         Cursor.visible = false;
         Cursor.lockState = CursorLockMode.Confined;
         //make wall move
-        GameObject wall = GameObject.FindWithTag("EndWALL");
-        Destroy(wall);
+        Destroy(endWall);
         //reset values
         howManyPuzzleFinish = 0;
         //2 generator for different region 

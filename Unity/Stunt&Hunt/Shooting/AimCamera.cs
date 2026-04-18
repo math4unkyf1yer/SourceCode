@@ -12,16 +12,11 @@ public class AimCamera : MonoBehaviour
     public Transform playerBody;
     public Transform shoulderNotMoving;
     public float maxAngle = 90f;
-    private float lastValidX;
     public Transform PlayerObj;
     public Rigidbody rb;
     public Transform combatLookAt;
     public CinemachineFreeLook freeLookCam;
     public CinemachineFreeLook freeLookCamMouse;
-
-    private string lastControlScheme = "Mouse";
-    private float inputCheckDelay = 1f;
-    private float inputTimer = 0f;
 
     //mouse camera
     public GameObject thirdpersonMouse;
@@ -106,22 +101,8 @@ public class AimCamera : MonoBehaviour
         if (player == null || PlayerObj == null || orientation == null)
             return; // Skip update if references are missing
 
-        if (currentStyle == CameraStyle.Combat)
+        if (currentStyle == CameraStyle.Combat || currentStyle == CameraStyle.basic)
         {
-            Vector3 viewDir = player.position - new Vector3(transform.position.x, player.position.y, transform.position.z);
-            orientation.forward = viewDir.normalized;
-
-            Vector3 dirCombatLookAt = combatLookAt.position - new Vector3(transform.position.x, combatLookAt.position.y, transform.position.z);
-            orientation.forward = dirCombatLookAt.normalized;
-            PlayerObj.forward = dirCombatLookAt.normalized;
-            playerBody.forward = dirCombatLookAt.normalized;
-        }
-        if (currentStyle == CameraStyle.basic)
-        {
-
-            Vector3 viewDir = player.position - new Vector3(transform.position.x, player.position.y, transform.position.z);
-            orientation.forward = viewDir.normalized;
-
             Vector3 dirCombatLookAt = combatLookAt.position - new Vector3(transform.position.x, combatLookAt.position.y, transform.position.z);
             orientation.forward = dirCombatLookAt.normalized;
             PlayerObj.forward = dirCombatLookAt.normalized;
@@ -157,13 +138,7 @@ public class AimCamera : MonoBehaviour
         {
             float clampedAngle = Mathf.Clamp(angle, -maxAngle, maxAngle);
             float delta = clampedAngle - angle;
-
-            // Translate that angle correction into XAxis value correction
-            activeCam.m_XAxis.Value += delta * Time.deltaTime * 5f; // smooth correction
-        }
-        else
-        {
-            lastValidX = activeCam.m_XAxis.Value; // store current if valid
+            activeCam.m_XAxis.Value += delta * Time.deltaTime * 5f;
         }
 
     }

@@ -17,7 +17,6 @@ public class PuzzleStart : MonoBehaviour
 
     private void Start() //activating whichever puzzle
     {
-       // mapScript = GameObject.Find("MapGenerator").GetComponent<MapGenerator>();
         if (!canvas)
         {
             canvas = GameObject.Find("Canvas_");
@@ -63,7 +62,6 @@ public class PuzzleStart : MonoBehaviour
         Cursor.lockState = CursorLockMode.None;
 
         cutsceneCamera.SetActive(true);
-      //  timeline.SetActive(true);
  
         StartCoroutine(PuzzleStarting());
     }
@@ -74,8 +72,7 @@ public class PuzzleStart : MonoBehaviour
         player.transform.position = playerLocation.position;
         puzzleManagerScript.player = player;
         puzzleManagerScript.puzzlePosition = spawnLocation;
-        puzzleManagerScript.startPuzzle();
-      //  timeline.SetActive(false);
+        puzzleManagerScript.StartPuzzle();
         this.gameObject.SetActive(false);
     }
 }

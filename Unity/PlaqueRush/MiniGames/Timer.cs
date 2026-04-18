@@ -6,7 +6,7 @@ using UnityEngine.UI;
 public class Timer : MonoBehaviour
 {
     private bool timerActivate;
-    [SerializeField] float currenttimer;
+    [SerializeField] float currentTimer;
     [SerializeField] float maxtimer;
     [SerializeField] Slider timerSlider;
 
@@ -18,10 +18,10 @@ public class Timer : MonoBehaviour
         menuScript = GetComponent<Menu>();
         puzzleManager = GetComponent<PuzzleManager>();
     }
-    public void startTimer()
+    public void StartTimer()
     {
         SetMaxSliderValue();
-        currenttimer = maxtimer;
+        currentTimer = maxtimer;
         gameObject.SetActive(true);
         timerActivate = true;
     }
@@ -48,11 +48,11 @@ public class Timer : MonoBehaviour
 
     void TimerRunning()
     {
-        if(currenttimer > 0)
+        if(currentTimer > 0)
         {
-            currenttimer -= Time.deltaTime;
+            currentTimer -= Time.deltaTime;
             //set the slider
-            setSliderValue(currenttimer);
+            SetSliderValue(currentTimer);
         }
         else
         {
@@ -67,7 +67,7 @@ public class Timer : MonoBehaviour
         timerSlider.maxValue = maxtimer;
         timerSlider.value = maxtimer;
     }
-    void setSliderValue(float tvalue)
+    void SetSliderValue(float tvalue)
     {
         timerSlider.value = tvalue;
     }

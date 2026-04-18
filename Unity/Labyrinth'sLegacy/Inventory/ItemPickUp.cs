@@ -1,23 +1,19 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class ItemPickUp : Interactable
 {
     public Item item;
+
     public override void Interact()
     {
         base.Interact();
-
         PickUp();
     }
-    void PickUp()
+
+    private void PickUp()
     {
-        //add to inventory
-        bool wasPickUp = Inventory.Intance.Add(item);
-        if (wasPickUp)
-        {
+        bool wasPickedUp = Inventory.Intance.Add(item);
+        if (wasPickedUp)
             Destroy(gameObject);
-        }
     }
 }
